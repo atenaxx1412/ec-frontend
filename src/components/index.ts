@@ -8,3 +8,6 @@ export * from './auth';
 
 // レイアウトコンポーネント
 export * from './layout';
+
+// 商品コンポーネント
+export * from './product';

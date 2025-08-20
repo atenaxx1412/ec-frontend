@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ロリポップSSG用設定
-  output: 'export',
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
-  distDir: 'out',
+  // ロリポップSSG用設定（開発段階では一時的に無効化）
+  // output: 'export',
+  // trailingSlash: true,
+  // skipTrailingSlashRedirect: true,
+  // distDir: 'out',
   
   // 画像最適化無効化（ロリポップ環境用）
   images: {
