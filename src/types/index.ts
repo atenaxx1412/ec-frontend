@@ -1,6 +1,9 @@
 // 基本型の再エクスポート
 export * from './api';
 
+// React型定義
+import { ReactNode, ComponentType } from 'react';
+
 // フォーム型定義
 export interface LoginFormData {
   email: string;
@@ -41,16 +44,16 @@ export interface LoadingState {
 }
 
 export interface AuthState {
-  user: User | null;
-  tokens: AuthTokens | null;
+  user: import('./api').User | null;
+  tokens: import('./api').AuthTokens | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
 }
 
 export interface AdminAuthState {
-  admin: Admin | null;
-  tokens: AuthTokens | null;
+  admin: import('./api').Admin | null;
+  tokens: import('./api').AuthTokens | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
@@ -196,7 +199,7 @@ export interface CardProps extends BaseComponentProps {
 }
 
 export interface ProductCardProps {
-  product: Product;
+  product: import('./api').Product;
   onAddToCart?: (productId: number) => void;
   onViewDetails?: (productId: number) => void;
   showActions?: boolean;
@@ -225,7 +228,7 @@ export interface UseAPIResult<T> {
 }
 
 export interface UsePaginatedAPIResult<T> extends UseAPIResult<T[]> {
-  pagination: PaginationInfo | null;
+  pagination: import('./api').PaginationInfo | null;
   loadMore: () => void;
   hasMore: boolean;
 }

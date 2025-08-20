@@ -1,37 +1,36 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Button } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: 'ホーム',
-  description: 'ECサイトのホームページ。最新商品や注目商品をご紹介します。',
+  description: 'EC Siteのホームページ。最新商品や注目商品をご紹介します。',
 };
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* ヒーローセクション */}
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            ECサイト
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            高品質な商品を豊富に取り揃えたオンラインショップ
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a
-              href="/products"
-              className="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-            >
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      {/* ヒーローセクション */}
+      <div className="text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          EC Site
+        </h1>
+        <p className="mt-6 text-lg leading-8 text-gray-600">
+          高品質な商品を豊富に取り揃えたオンラインショップ
+        </p>
+        <div className="mt-10 flex items-center justify-center gap-x-6">
+          <Link href="/products">
+            <Button variant="primary" size="lg">
               商品を見る
-            </a>
-            <a
-              href="/categories"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              カテゴリ一覧 <span aria-hidden="true">→</span>
-            </a>
-          </div>
+            </Button>
+          </Link>
+          <Link href="/auth/register">
+            <Button variant="outline" size="lg">
+              新規登録
+            </Button>
+          </Link>
         </div>
+      </div>
 
         {/* 機能セクション */}
         <div className="mt-20">
@@ -70,18 +69,31 @@ export default function HomePage() {
           </h2>
           <p className="mt-2 text-blue-700">
             現在、Next.js + TypeScript を使用してECサイトを開発中です。
-            バックエンドAPI（localhost:8080）との連携機能を順次実装予定です。
+            バックエンドAPI（localhost:8080）との連携機能を順次実装中です。
           </p>
           <div className="mt-4">
             <p className="text-sm text-blue-600">
               ✅ Next.js 14 + TypeScript 基盤構築完了<br/>
-              🔄 商品一覧・詳細機能 開発中<br/>
-              📅 ユーザー認証・カート機能 予定<br/>
+              ✅ APIクライアント・認証基盤完了<br/>
+              ✅ ログイン・登録機能完了<br/>
+              🔄 商品一覧・詳細機能 開発予定<br/>
+              📅 カート・注文機能 予定<br/>
               📅 管理者機能 予定
             </p>
           </div>
+          <div className="mt-6 flex gap-4">
+            <Link href="/auth/login">
+              <Button variant="secondary" size="sm">
+                ログイン機能を試す
+              </Button>
+            </Link>
+            <Link href="/api-test">
+              <Button variant="ghost" size="sm">
+                API接続テスト
+              </Button>
+            </Link>
+          </div>
         </div>
-      </div>
-    </main>
+    </div>
   );
 }

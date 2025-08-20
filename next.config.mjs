@@ -13,7 +13,7 @@ const nextConfig = {
   
   // 実験的機能
   experimental: {
-    typedRoutes: true,
+    typedRoutes: false,
   },
   
   // 環境変数

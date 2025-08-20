@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { apiClient } from '@/lib/api';
 import { AuthManager } from '@/lib/auth';
 import type { User, AuthTokens, LoginRequest, RegisterRequest, AuthState } from '@/types';
@@ -17,15 +17,10 @@ export function useAuth() {
     error: null,
   });
 
-  // 初期化時に保存されている認証情報を復元
-  useEffect(() => {
-    initializeAuth();
-  }, []);
-
   /**
    * 認証状態の初期化
    */
-  const initializeAuth = async () => {
+  const initializeAuth = useCallback(async () => {
     try {
       const tokens = AuthManager.getUserTokens();
       const user = AuthManager.getUser();
@@ -71,7 +66,12 @@ export function useAuth() {
       AuthManager.clearUserAuth();
       apiClient.clearAccessToken();
     }
-  };
+  }, []);
+
+  // 初期化時に保存されている認証情報を復元
+  useEffect(() => {
+    initializeAuth();
+  }, [initializeAuth]);
 
   /**
    * ログイン

@@ -1,16 +1,18 @@
 import type { Metadata } from 'next';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { Navbar, Footer } from '@/components/layout';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'ECサイト - 高品質な商品をお届け',
-    template: '%s | ECサイト',
+    default: 'EC Site - 高品質な商品をお届け',
+    template: '%s | EC Site',
   },
   description: '最新の商品を豊富に取り揃えたECサイト。高品質な商品を全国にお届けします。',
   keywords: ['EC', 'オンラインショップ', '通販', '商品'],
-  authors: [{ name: 'ECサイト運営チーム' }],
-  creator: 'ECサイト',
-  publisher: 'ECサイト',
+  authors: [{ name: 'EC Site運営チーム' }],
+  creator: 'EC Site',
+  publisher: 'EC Site',
   robots: {
     index: true,
     follow: true,
@@ -26,21 +28,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     url: 'https://your-domain.com',
-    siteName: 'ECサイト',
-    title: 'ECサイト - 高品質な商品をお届け',
+    siteName: 'EC Site',
+    title: 'EC Site - 高品質な商品をお届け',
     description: '最新の商品を豊富に取り揃えたECサイト',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'ECサイト',
+        alt: 'EC Site',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ECサイト - 高品質な商品をお届け',
+    title: 'EC Site - 高品質な商品をお届け',
     description: '最新の商品を豊富に取り揃えたECサイト',
     images: ['/og-image.jpg'],
   },
@@ -53,10 +55,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>
-        <div id="root">
-          {children}
-        </div>
+      <body className="min-h-screen bg-gray-50">
+        <AuthProvider>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );
